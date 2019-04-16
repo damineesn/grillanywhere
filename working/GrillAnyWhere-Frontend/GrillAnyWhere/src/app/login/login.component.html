@@ -1,0 +1,125 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">GRILL ANYWHERE</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="nav-link">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a href="services.html" class="nav-link">Services</a>
+        </li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <button type="button" class="btn btn-info" routerLink="/login" >
+          LOGIN
+        </button>
+        <li>
+          &nbsp;&nbsp;
+        </li>
+        <button type="button" class="btn btn-info" routerLink="/register" >
+          REGISTER
+        </button>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--login modal-->
+<div>
+  <div>
+    <ul class="nav nav-tabs bg-light" role="tab-list">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#renter-login">Login as a Owner</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#owner-login">Login as a Register</a>
+      </li>
+    </ul>
+    <br /><br><br><br>
+    <div class="tab-content">
+      <!--Renter Login-->
+      <div id="renter-login" class="container tab-pane active">
+
+        <div class="col-md-6  offset-sm-2">
+          <form [formGroup]="userForm" novalidate (submit)="saveData()">
+
+            <div>
+              <input type="text" formControlName="email" name="email" ng-model="email" placeholder="Enter your Email Id ..."
+                class='form-control input' />
+              <span *ngIf="userForm.controls['email'].errors">
+                <span class='text-danger' *ngIf="userForm.controls['email'].errors.required">
+                  * Email is Required
+                </span>
+                <span class='text-danger' *ngIf="userForm.controls['email'].errors.email">
+                  Please specify your register Email
+                </span>
+              </span>
+            </div><br>
+
+
+
+
+
+            <div>
+              <input type="password" formControlName="password" name="password" ng-model="password" placeholder="Enter your Password ..."
+                class='form-control input' />
+              <span *ngIf="userForm.status =='INVALID' ">
+                <span class='text-danger' *ngIf="userForm.controls['password'].errors">
+                  <span *ngIf="userForm.controls['password'].errors.required">
+                    * Please create a Password
+                  </span>
+                </span>
+              </span>
+            </div><br>
+
+            <input type="submit" name="save" value="LOGIN" class='btn btn-primary button' />
+          </form>
+        </div>
+      </div>
+
+      <!--Owner login-->
+      <div id="owner-login" class="container tab-pane ">
+
+        <div class="col-md-6 offset-sm-2">
+          <form [formGroup]="userForm" novalidate (submit)="save()">
+
+            <div>
+              <input type="text" formControlName="email" name="email"
+               placeholder="Owner Email Id ..." class='form-control input ' />
+              <span *ngIf="userForm.controls['email'].errors">
+                <span class='text-danger' *ngIf="userForm.controls['email'].errors.required">
+                  * Email is Required
+                </span>
+                <span class='text-danger' *ngIf="userForm.controls['email'].errors.email">
+                  Please specify your register Email
+                </span>
+              </span>
+            </div><br>
+
+
+
+            <div>
+              <input type="password" formControlName="password" name="password" placeholder="Enter your Password ..."
+                class='form-control input' />
+              <span *ngIf="userForm.status =='INVALID' ">
+                <span class='text-danger' *ngIf="userForm.controls['password'].errors">
+                  <span *ngIf="userForm.controls['password'].errors.required">
+                    * Please enter Password
+                  </span>
+                </span>
+              </span>
+            </div><br>
+
+            <input type="submit" name="save" value="LOGIN" class='btn btn-primary button' />
+          </form>
+        </div>
+      </div>
+    </div>
